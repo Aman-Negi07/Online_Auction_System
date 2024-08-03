@@ -1,0 +1,24 @@
+<% layout("/layout/boilerplateadmin")%>
+<body>
+    <!-- <form method="GET" action="/listing/new">
+        <button>Add new item</button>
+    </form> -->
+    <h2 class="main-heading">Live Auction</h2>
+    <div class="row row-cols-lg-3 row-cols-md-2 row-cols-sm-1 ">
+        <%for(let i of result){%>
+            <a href="/listing/<%= i.id%>" class="listing-link">
+            <div class="card col">
+                <img src="<%=i.img %>" class="card-img-top" alt="listing_image"  style="height: 20rem;">
+                <div class="card-img-overlay"></div>
+                <div class="card-body">
+                  <p class="card-text">
+                    <%= i.item %><br>
+                    <b>Current bid &#8377; <%= i.price.toLocaleString("en-IN") %> </b>
+                </p>
+                </div>
+              </div>
+              </a>
+              <%}%>
+    </div>
+    
+</html>

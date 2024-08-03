@@ -1,0 +1,104 @@
+<% layout("/layout/boilerplateuser")%>
+<style>
+    .card-text {
+        margin-top: 1.5rem;
+        font-family: Arial, sans-serif;
+        background-color: #f8f9fa;
+        padding: 15px;
+        border: 1px solid #dee2e6;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+    .card-text b {
+        color: #343a40;
+        font-size: 1.25em;
+    }
+    .card-text .price {
+        color: #28a745 !important;
+        font-weight: bold !important;
+        font-size: 1.1em !important;
+    }
+    .card-text .item{
+        color: #090a09 !important;
+        font-weight: bold !important;
+        font-size: 1.8em !important;
+    }
+    .card-text .etime,
+    .card-text .seller {
+        color: #090a09 !important;
+        font-weight: bold !important;
+        font-size: 1rem !important;
+    }
+</style>
+<script>
+console.log(`<%=userid%>`);
+  if(localStorage.getItem("count_timer"+<%=item.id %>)){
+    var count_timer = localStorage.getItem("count_timer"+<%=item.id %>);
+} else {
+    var count_timer = <%=item.etime %>;
+}
+var minutes = parseInt(count_timer/60);
+var seconds = parseInt(count_timer%60);
+function countDownTimer(){
+    if(seconds < 10){
+        seconds= "0"+ seconds ;
+    }if(minutes < 10){
+        minutes= "0"+ minutes ;
+    }
+    
+    document.getElementById("total-time-left").innerHTML = `<span style='color: red; font-weight: bold; font-size: 20px; background-color: #f2f2f2; padding: 5px; border: 3px solid #336699; border-radius: 2rem; margin-bottom: 20%;'>
+                        Deal Ends Soon! Time Left: ${minutes} Minutes ${seconds} Seconds
+                    </span>`;
+    if(count_timer <= 0){
+        localStorage.removeItem("count_timer"+<%= item.id %>);
+          // Submit the hidden form
+      document.getElementById("end-deal-form").submit();
+    } else {
+        count_timer = count_timer -1 ;
+        minutes = parseInt(count_timer/60);
+        seconds = parseInt(count_timer%60);
+        localStorage.setItem("count_timer"+<%=item.id %>,count_timer);
+        setTimeout("countDownTimer()",1000);
+    }
+}
+setTimeout("countDownTimer()",1000);
+function setid(userId) {
+    localStorage.setItem(userId, <%=userid%>);
+    document.getElementById("bid-form").submit();  // Submit the form after storing the user ID
+}
+
+</script>
+<body>
+    <div class="row mt-3">
+        <div class="col-8 offset-3">
+    </div>
+    <div class="card col-6 offset-3 show-card" >
+        <img src="<%= item.img %>" class="card-img-top show-img" alt="listing_image">
+        <div class="card-body">
+            <p class="card-text">
+                <span class="item"><%= item.item %></span><br>
+                <%= item.description %><br>
+                <span class="price"> Current Bid: &#8377; <%= item.price.toLocaleString("en-IN") %></span><br>
+                <span class="seller">Seller: <%= item.seller %></span><br>
+            </p>
+        </div>
+    </div>
+    <br>
+    <div class="btns offset-3">
+        <form id="bid-form"  method="POST" action="/listing/<%= item.id %>/edit/price">
+            <div class="mb-4"> 
+                <label for="price" class="form-label">Current Bid</label>
+                <input name="price" value="<%= item.price %>" type="number" class="form-control">
+            </div>
+            <button type="button" onclick="setid(<%= item.id %>)" class="btn btn-dark col-0.50  bid-btn mb-3"> Bid </button>
+        </form>
+    </div>
+</div>
+<div class="count_down mb-3"  id="total-time-left" align="center"> </div>
+<form id="end-deal-form" method="POST" action="/end-deal" style="display: none;">
+    <input type="hidden" name="id" value="<%= item.id %>">
+    <input type="hidden" name="userid" value="<%= userid %>">
+    <input type="hidden" name="item" value="<%= item.item %>">
+    <input type="hidden" name="price" value="<%= item.price %>">
+  </form>
+</body>

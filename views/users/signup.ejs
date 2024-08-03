@@ -1,0 +1,26 @@
+<% layout("/layout/boilerplate")%>
+<body>
+    <div class="row mt-3">
+    <h1 class="col-8 offset-2">SignUp on BigAuction </h1>
+    <div class="col-8 offset-2">
+        <form action="/signup" method="POST" >
+            <div class="mb-3">
+                <label for="id" class="form-label">Id</label>
+                <input name="id" placeholder="Enter Id" type="text" class="form-control" required>
+            </div> 
+            <div class="mb-3">
+                <label for="username" class="form-label">Username</label>
+                <input name="username" placeholder="Enter Username" type="text" class="form-control" required>
+            </div> 
+            <div class="mb-3">
+                <label for="gamil" class="form-label">Gmail</label>
+                <input name="gmail" placeholder="Enter Gmail" type="text" class="form-control" required>
+            </div> 
+            <div class="mb-3">
+                <label for="password" class="form-label">Password</label>
+                <input name="password" placeholder="Enter Password" type="password" class="form-control" required>
+            </div>
+            <button class="btn btn-sucess mt-3">Sign Up</button>
+        </form>
+    </div>
+        </div>

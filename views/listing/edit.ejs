@@ -1,0 +1,31 @@
+<% layout("/layout/boilerplateadmin")%>
+<body>
+    <div class="row mt-3">
+        <div class="col-8 offset-2">
+    <h2> Edit your Listing</h2>
+    <form method="POST" action="/listing/<%= item.id %>?_method=PATCH">
+        <div class="mb-3"> 
+            <label for="item" class="form-label">Edit Item</label>
+            <input name="item" value="<%= item.item %>" type="text" class="form-control">
+        </div>
+        <div class="mb-3"> 
+            <label for="description" class="form-label">Edit Description</label>
+            <textarea name="description" value="<%= item.description %>" type="text"  class="form-control"><%= item.description %></textarea>
+        </div>
+        <div class="mb-3"> 
+            <label for="price" class="form-label">Edit price</label>
+            <input name="price" value="<%= item.price %>" type="number" class="form-control">
+        </div>
+        <div class="mb-3"> 
+            <label for="etime" class="form-label">Edit End time</label>
+            <input name="etime" value="<%= item.etime %>" type="number" class="form-control">
+        </div>
+        <div class="mb-3"> 
+            <label for="img" class="form-label">Edit image URL</label>
+            <input name="img" value="<%= item.img %>" type="text" class="form-control">
+        </div>  
+        <button class="btn btn-dark edit-btn mb-3"> Submit </button>
+    </form>
+</body>
+</div>
+</div>

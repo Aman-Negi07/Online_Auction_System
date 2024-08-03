@@ -1,0 +1,207 @@
+body{
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+.main-heading {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    font-size: 3em;
+    font-weight: 700;
+    color: #333;
+    text-align: center;
+    padding: 10px 20px;
+    background: linear-gradient(45deg, #f3ec78, #af4261);
+    color: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease;
+}
+
+.main-heading:hover {
+    transform: scale(1.05);
+}
+.container{
+     flex: 1;
+}
+.navbar{
+    height: 5rem;
+    background-color: white;
+}
+.navbar-brand{
+    color: green !important;
+    font-size: 2rem !important;
+}
+
+/* so that our modification overpowered */
+.nav-link{
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    color: rgba(11, 11, 203, 0.806) !important; 
+}  
+/*navbar admin*/
+.nav-link {
+    transition: color 0.3s, color 0.3s, transform 0.3s;
+}
+.nav-link:hover {
+    color: black !important;
+}
+
+.admin{
+    padding: 12px 25px;
+    color: rgba(44, 9, 202, 0.89) !important;
+    text-decoration: none;
+    border-radius: 25px;
+    font-size: 16px;
+    border: 3px solid rgb(15, 18, 219) !important;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s, color 0.3s, border-color 0.3s, transform 0.3s;
+}
+
+.admin:hover {
+    background-color:rgb(15, 18, 219) ;
+    color: white !important;
+}
+
+/*Footer */
+.f-info-links a{
+    text-decoration: none;
+    color: #222222;
+}
+.f-info-links a:hover{
+    text-decoration: underline;
+    color: #222222;
+}
+.f-info-links,.f-info-social,.f-info-brand{
+    width:100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.f-info-social i{
+    font-size: 1.5rem;
+    margin-right: 1.5rem;
+} 
+.f-info{
+    text-align: center;
+    height: 8rem;
+    background-color: #ebebeb;;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: space-evenly;
+}
+ 
+/* Cards */
+.card{
+    border: none !important;
+    margin-bottom: 2rem;
+}
+.card-img-top{
+    border-radius: 1rem !important;
+    width: 100% !important;
+    object-fit: cover !important;
+}
+.card-body{
+    padding: 0 !important;
+}
+.card-text{
+    font-weight: 400 !important;
+}
+.listing-link{
+    text-decoration: none !important;
+}
+
+/*Card Effect*/
+.card-img-overlay{
+    opacity: 0; 
+}
+.card-img-overlay:hover{
+    opacity: 0.2;
+    background-color:white ;
+ 
+}
+/*temp*/
+
+
+ /* .card {
+    position: relative;
+    width: 100%;
+    max-width: 400px;
+    margin: 10px;
+    overflow: hidden;
+    transition: transform 0.3s ease;
+} 
+*/
+/*
+.card:hover {
+    transform: scale(1.05); 
+} */
+
+
+
+/*temp*/
+/*for new*/
+.btn{
+    background-color: rgba(11, 11, 203, 0.806) !important;
+    border: none !important;
+}
+
+/*Show Pages */
+.show-img{
+    height: 50vh !important;
+}
+ .btns{
+    display: flex;
+ }
+ .del{
+    background-color: red !important;
+ }
+ /*SignUp*/
+ .btn-sucess{
+    background-color: rgb(47, 180, 47)  !important;
+ }
+
+ /*CountDown*/
+ .countdown{
+    width: 5% !important;
+    font-size: larger !important;
+    text-align: center !important;
+    display: flex;
+    background-color: aquamarine;
+    border-radius: 1rem;
+ }
+ /*Bid_buttons*/
+ .btns_bid{
+    width: 5% !important;
+    background-color: rgb(16, 144, 223);
+    border-radius: 1rem;
+ }
+
+ /* Table*/
+ .table{
+    width: 100% !important;
+    text-align: center;
+ }
+ .table thead{
+    font-size: large;
+    background-color: rgb(5, 106, 221) !important;
+ }
+ /*
+ .table th{
+    background-color: blue;
+    color:#ebebeb;
+    text-align: left;
+ }
+ .table th,
+ .table td{
+    padding: 6px 8px;
+    font-weight: normal;
+ }
+ .table tbody tr:nth-of-type(even){
+    background-color: #ebebeb;
+ } */
+ 
+

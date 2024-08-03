@@ -1,0 +1,65 @@
+<% layout("/layout/boilerplateadmin")%>
+<script>
+console.log(`<%=userid%>`);
+  if(localStorage.getItem("count_timer"+<%=item.id %>)){
+    var count_timer = localStorage.getItem("count_timer"+<%=item.id %>);
+} else {
+    var count_timer = <%=item.etime %>;
+}
+var minutes = parseInt(count_timer/60);
+var seconds = parseInt(count_timer%60);
+function countDownTimer(){
+    if(seconds < 10){
+        seconds= "0"+ seconds ;
+    }if(minutes < 10){
+        minutes= "0"+ minutes ;
+    }
+    
+    document.getElementById("total-time-left").innerHTML = `<span style='color: red; font-weight: bold; font-size: 20px; background-color: #f2f2f2; padding: 5px; border: 3px solid #336699; border-radius: 2rem; margin-bottom: 20%;'>
+                        Deal Ends Soon! Time Left: ${minutes} Minutes ${seconds} Seconds
+                    </span>`;
+    if(count_timer <= 0){
+         localStorage.removeItem("count_timer"+<%= item.id %>);
+         document.getElementById("unsold-form").submit();
+    } else {
+        count_timer = count_timer -1 ;
+        minutes = parseInt(count_timer/60);
+        seconds = parseInt(count_timer%60);
+        localStorage.setItem("count_timer"+<%=item.id %>,count_timer);
+        setTimeout("countDownTimer()",1000);
+    }
+}
+setTimeout("countDownTimer()",1000);
+</script>
+<body>
+    <div class="row mt-3">
+        <div class="col-8 offset-3">
+    <h2> Listing details </h2>
+    </div>
+    <div class="card col-6 offset-3 show-card" >
+        <img src="<%= item.img %>" class="card-img-top show-img" alt="listing_image">
+        <div class="card-body">
+          <p class="card-text">
+            <b><%= item.item %></b><br>
+            <%= item.description %><br>
+            &#8377; <%= item.price.toLocaleString("en-IN") %><br>
+            <%= item.etime %><br>
+            <%= item.seller%><br>
+        </p>
+        </div>
+    </div>
+    <br>
+    <div class="btns">
+    <a href="/listing/<%= item.id%>/edit" class="btn btn-dark col-0.75 offset-3 edit-btn mb-4"> Edit</a>
+    <form method="POST" action="/listing/<%= item.id %>?_method=DELETE">
+        <button class="btn btn-dark offset-5 del mb-4"> delete </button>
+    </form>
+</div>
+</div>
+<div class="count_down mb-3" id="total-time-left" align="center"> </div>
+<form id="unsold-form" method="POST" action="/unsold" style="display: none;">
+    <input type="hidden" name="id" value="<%= item.id %>">
+    <input type="hidden" name="price" value="<%= item.price %>">
+    <input type="hidden" name="item" value="<%= item.item %>">
+  </form>
+</body>

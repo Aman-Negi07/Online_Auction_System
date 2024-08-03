@@ -1,0 +1,60 @@
+<% layout("/layout/boilerplateadmin")%>
+<style>
+    body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        background-color: #f4f4f4;
+        margin: 0;
+        padding: 20px;
+    }
+    h2 {
+        text-align: center;
+        margin-bottom: 20px;
+        font-size: 32px;
+        font-weight: 700;
+        color: #333;
+        text-transform: uppercase;
+        letter-spacing: 1.5px;
+        background: linear-gradient(to right, #4a90e2, #007aff);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+    }
+    .table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 0 auto;
+        box-shadow: 0 2px 3px rgba(0, 0, 0, 0.1);
+    }
+    .table th, .table td {
+        text-align: center !important;
+        border: 1px solid #ddd;
+        padding: 12px 15px;
+        text-align: left;
+    }
+    .table th {
+        background-color: #0866E8;
+        color: white;
+        font-weight: bold;
+    }
+</style>
+       <div >
+        <h2 style="text-align: center;">Users Information</h2>
+        <table class="table" >
+            <thead>
+           <tr>
+            <th> ID</th>
+            <th> Name</th>
+            <th> Gmail</th>
+           </tr>
+           </thead>
+           <tbody>
+        <%for(let i of result){%>
+            <tr>
+                <td> <%=i.id %></td>
+                <td> <%=i.username %></td>
+                <td> <%=i.gmail %></td>
+            </tr>
+            <%}%>
+        </tbody>
+        </table>
+    </div>

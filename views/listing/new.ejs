@@ -1,0 +1,41 @@
+<% layout("/layout/boilerplateadmin")%>
+<body>
+    <div class="row mt-3">
+    <div class="col-8 offset-3">
+    <br>
+    <h2> Adding New Item</h2>
+    <form method="POST" action="/listing">
+        <div class="mb-3"> 
+            <label for="id" class="form-label">Enter id</label>
+            <input name="id" placeholder="enter id" type="text" class="form-control" required>
+        </div>
+        <div class="mb-3">
+            <label for="item" class="form-label">Enter the item</label>
+            <textarea name="item" placeholder="enter item" type="text" class="form-control" required></textarea>
+        </div> 
+        <div class="mb-3">
+            <label for="description" class="form-label">Description</label>
+            <textarea name="description" placeholder="enter description" type="text" class="form-control" required></textarea>
+        </div> 
+        <div class="mb-3">
+            <label for="price" class="form-label">Price</label>
+            <input name="price" placeholder="enter price" type="number" class="form-control" required>
+        </div> 
+        <div class="mb-3">
+            <label for="etime" class="form-label">End Time</label>
+            <input name="etime" placeholder="enter etime" type="number" class="form-control" required>
+        </div> 
+        <div class="mb-3">
+            <label for="seller" class="form-label">Enter the Seller</label>
+            <input name="seller" placeholder="enter seller" type="text" class="form-control" required>
+        </div> 
+        <div class="mb-3">
+            <label for="img" class="form-label">Enter the URL of image</label>
+            <input name="img" placeholder="enter image link" type="text" class="form-control" required>
+        </div> 
+        <button class="btn btn-dark"> Add </button>
+    <br><br>
+    </form>
+</div>
+</div>
+</body>
